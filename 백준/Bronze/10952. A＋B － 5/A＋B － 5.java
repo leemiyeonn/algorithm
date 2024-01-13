@@ -12,13 +12,13 @@ public class Main {
 
         while (true) {
             String line = bf.readLine();
-
             if (line.isEmpty() || line.equals("0 0")) {
                 break;
             }
-
-            int n1 = Integer.parseInt(line.split(" ")[0]);
-            int n2 = Integer.parseInt(line.split(" ")[1]);
+            
+            String[] numbers = line.split(" ");
+            int n1 = Integer.parseInt(numbers[0]);
+            int n2 = Integer.parseInt(numbers[1]);
             int sum = n1 + n2;
 
             bw.write(String.valueOf(sum));
