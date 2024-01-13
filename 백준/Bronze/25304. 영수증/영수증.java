@@ -6,9 +6,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int total = sc.nextInt();
         int nItem = sc.nextInt();
-        
+
         int result = 0;
-        
+        String print = "No";
+
         for (int i = 0; i < nItem; i++ ) {
             int price = sc.nextInt();
             int count = sc.nextInt();
@@ -16,9 +17,9 @@ public class Main {
         }
 
         if (total == result) {
-            System.out.println("Yes");
-        } else {
-            System.out.println("No");
+            print = "Yes";
         }
+
+        System.out.println(print);
     }
 }
