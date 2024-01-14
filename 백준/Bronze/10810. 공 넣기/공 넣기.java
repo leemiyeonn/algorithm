@@ -32,9 +32,11 @@ public class Main {
 
         StringBuilder result = new StringBuilder();
 
-        for (int ball : basketArr) {
-            result.append(ball);
-            result.append(" ");
+        for (int k = 0; k < basketArr.length; k++) {
+            result.append(basketArr[k]);
+            if (k < basketArr.length - 1) {
+                result.append(" ");
+            }
         }
 
         bw.write(String.valueOf(result));
