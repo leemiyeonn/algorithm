@@ -12,14 +12,11 @@ public class Main {
 
         int testCase = Integer.valueOf(br.readLine());
 
-
         for (int i = 0; i < testCase; i++) {
             String word = br.readLine();
-            Character firstChar = word.charAt(0);
-            Character endChar = word.charAt(word.length() - 1);
+            String result = word.substring(0, 1) + word.substring(word.length() - 1);
 
-            bw.write(String.valueOf(firstChar) + String.valueOf(endChar));
-
+            bw.write(result);
             if (i < testCase - 1) {
                 bw.newLine();
             }
