@@ -11,16 +11,18 @@ public class Main {
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int count = Integer.parseInt(br.readLine());
-        String numbers = br.readLine();
-        
+        String number = br.readLine();
+
+        char[] arr = number.toCharArray();
         int sum = 0;
-        for (int i = 0; i < count; i++) {
-            char digitChar = numbers.charAt(i);
-            int digit = Character.getNumericValue(digitChar);
-            sum += digit;
+
+        for (char c : arr) {
+            sum += c - '0';
         }
-        
+
         bw.write(String.valueOf(sum));
+
         bw.close();
+        br.close();
     }
 }
