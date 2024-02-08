@@ -1,10 +1,10 @@
-import java.util.*;
-
 class Solution {
-    private int count = 0;
+    private int count;
     
     public int solution(int[] numbers, int target) {
-        dfs(numbers, 0, target, 0);
+        
+        dfs (numbers, 0, target, 0);
+        
         return count;
     }
     
@@ -14,8 +14,8 @@ class Solution {
                 count++;
             }
         } else {
-            dfs(numbers, depth + 1, target, sum + numbers[depth]);
-            dfs(numbers, depth + 1, target, sum - numbers[depth]);
+            dfs (numbers, depth + 1, target, sum + numbers[depth]);
+            dfs (numbers, depth + 1, target, sum - numbers[depth]);
         }
     }
 }
