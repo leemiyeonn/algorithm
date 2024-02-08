@@ -2,51 +2,46 @@ import java.util.*;
 
 class Solution {
     
-    int[] dx = {1, 0, -1, 0};
-    int[] dy = {0, 1, 0, -1};
+    private int[][] arr;
+    private int[][] distance;
+    private int[] dx = {1, 0, -1, 0};
+    private int[] dy = {0, 1, 0, -1};
+    
+    private int n;
+    private int m;
     
     public int solution(int[][] maps) {
-        int answer = 0;
         
-        int[][] visited = new int[maps.length][maps[0].length];
+        n = maps.length;
+        m = maps[0].length;
         
-        bfs(maps, visited);
-        answer = visited[maps.length-1][maps[0].length-1];
+        arr = maps;
+        distance = new int[n][m];
         
-        if(answer == 0){
-            answer = -1;
-        }
+        bfs(0, 0);
         
-        return answer;
+        return distance[n - 1][m - 1] == 0 ? -1 : distance[n - 1][m - 1] + 1;
     }
     
-    public void bfs(int[][] maps, int[][] visited){
-        int x = 0;
-        int y = 0;
-        visited[x][y] = 1;
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{x, y});
+    private void bfs (int i, int j) {
+        Queue<int[]> q = new LinkedList<>();
+        q.offer(new int[] {i, j});
         
-        while(!queue.isEmpty()){
-            int[] current = queue.remove();
-            int cX = current[0];
-            int cY = current[1];
-            
-            for(int i = 0; i < 4; i++){
-                int nX = cX + dx[i];
-                int nY = cY + dy[i];
+        while(!q.isEmpty()) {
+            int[] current = q.poll();
+                        
+            for (int k = 0; k < 4; k++) {
+                int x = current[0] + dx[k];
+                int y = current[1] + dy[k];
                 
-                if(nX < 0 || nX > maps.length-1 || nY < 0 || nY > maps[0].length-1)
-                    continue;
-                
-                if(visited[nX][nY] == 0 && maps[nX][nY] == 1){
-                    visited[nX][nY] = visited[cX][cY] + 1;
-                    queue.add(new int[]{nX, nY});
+                if (x >= 0 && y >= 0 && x < n && y < m) {
+                    if (arr[x][y] != 0 && distance[x][y] == 0){
+                        distance[x][y] = distance[current[0]][current[1]] + 1;
+                        
+                        q.offer(new int[] {x, y});
+                    }
                 }
             }
-            
         }
-        
-        
     }
 }
