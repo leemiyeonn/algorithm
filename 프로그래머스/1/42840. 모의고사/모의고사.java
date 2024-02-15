@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Solution {
-    public List<Integer> solution(int[] answers) {
+    public int[] solution(int[] answers) {
         
         int[] score = new int[3];
         int[] pattern1 = {1, 2, 3, 4, 5};
@@ -30,6 +30,6 @@ class Solution {
             }
         }
         
-        return winnerList;
+        return winnerList.stream().mapToInt(Integer::valueOf).toArray();
     }
 }
