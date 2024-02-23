@@ -27,7 +27,6 @@ class Solution {
         }
         
         int answer = 0;
-
         for (int i : clothes) {
             if (i > 0) {
                 answer++;
